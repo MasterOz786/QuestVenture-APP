@@ -1,0 +1,49 @@
+name: quest_venture
+description: A scavenger hunt adventure app powered by Velitt
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_screenutil: ^5.9.0
+  provider: ^6.1.1
+  url_launcher: ^6.2.1
+  http: ^1.1.0
+  # Added for email OTP functionality
+  mailer: ^6.0.1
+  crypto: ^3.0.3
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/logos/
+    - assets/images/quiz/
+    - assets/images/backgrounds/
+    - assets/images/backgrounds/start_quest.png
+    - assets/images/backgrounds/leader_board.png
+    - assets/images/backgrounds/about_us.png
+  
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Roboto-Medium.ttf
+          weight: 500
