@@ -6,12 +6,10 @@ class QuestVentureLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Image.asset(
-        'assets/images/backgrounds/white_logo.png',
-        width: 300.w,
-        fit: BoxFit.contain,
-      ),
+    return Image.asset(
+      'assets/images/backgrounds/black_logo.png',
+      width: 350.w,
+      fit: BoxFit.contain,
     );
   }
-}
+} 

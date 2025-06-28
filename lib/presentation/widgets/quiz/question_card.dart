@@ -17,7 +17,7 @@ class QuestionCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 12.5.w),
       padding: EdgeInsets.all(24.w),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
+        color: AppColors.cardBackgroundDark,
         borderRadius: BorderRadius.circular(25.r),
         boxShadow: [
           BoxShadow(

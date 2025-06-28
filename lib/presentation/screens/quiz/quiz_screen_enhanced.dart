@@ -136,6 +136,7 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.5,
+                  fontFamily: null,
                 ),
               ),
             ],
@@ -146,6 +147,7 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
               color: Colors.white70,
               fontSize: 8.sp,
               letterSpacing: 1.0,
+              fontFamily: null,
             ),
           ),
         ],
@@ -180,6 +182,7 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
               fontSize: 18.sp,
               fontWeight: FontWeight.bold,
               letterSpacing: 1.0,
+              fontFamily: null,
             ),
             textAlign: TextAlign.center,
           ),
@@ -197,6 +200,7 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
               fontSize: 24.sp,
               fontWeight: FontWeight.bold,
               letterSpacing: 2.0,
+              fontFamily: null,
             ),
           ),
           
@@ -209,6 +213,7 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
               fontSize: 16.sp,
               fontWeight: FontWeight.bold,
               letterSpacing: 1.0,
+              fontFamily: null,
             ),
             textAlign: TextAlign.center,
           ),
@@ -291,6 +296,7 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
               color: Colors.white,
               fontSize: 14.sp,
               fontWeight: FontWeight.bold,
+              fontFamily: null,
             ),
           ),
         ],
@@ -311,58 +317,84 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
 
   Widget _buildTextAnswers(List<String> answers) {
     return Column(
-      children: List.generate(answers.length, (index) {
-        return Container(
-          margin: EdgeInsets.only(bottom: 12.h),
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(15.r),
-              onTap: () {
-                setState(() {
-                  _selectedAnswer = index;
-                });
-              },
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
-                decoration: BoxDecoration(
-                  color: _selectedAnswer == index 
-                      ? const Color(0xFF3498DB).withOpacity(0.1)
-                      : Colors.white,
-                  borderRadius: BorderRadius.circular(15.r),
-                  border: Border.all(color: const Color(0xFF3498DB), width: 2),
+      children: [
+        Row(
+          children: [
+            Expanded(child: _buildAnswerOption(0, answers[0])),
+            SizedBox(width: 16.w),
+            Expanded(child: _buildAnswerOption(1, answers[1])),
+          ],
+        ),
+        SizedBox(height: 16.h),
+        Row(
+          children: [
+            Expanded(child: _buildAnswerOption(2, answers[2])),
+            SizedBox(width: 16.w),
+            Expanded(child: _buildAnswerOption(3, answers[3])),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildAnswerOption(int index, String text) {
+    final isSelected = _selectedAnswer == index;
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedAnswer = index;
+        });
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 4.h),
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.85),
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(
+            color: Color(0xFF3498DB),
+            width: 3,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 4,
+              offset: Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 32.w,
+              height: 32.h,
+              decoration: BoxDecoration(
+                color: isSelected ? Color(0xFF3498DB) : Colors.transparent,
+                borderRadius: BorderRadius.circular(8.r),
+                border: Border.all(
+                  color: Color(0xFF3498DB),
+                  width: 3,
                 ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 24.w,
-                      height: 24.h,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF3498DB).withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(4.r),
-                        border: Border.all(color: const Color(0xFF3498DB), width: 1),
-                      ),
-                    ),
-                    SizedBox(width: 16.w),
-                    Expanded(
-                      child: Text(
-                        answers[index],
-                        style: TextStyle(
-                          color: const Color(0xFFE74C3C),
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.0,
-                        ),
-                      ),
-                    ),
-                  ],
+              ),
+              child: isSelected
+                  ? Icon(Icons.check, color: Colors.white, size: 20.sp)
+                  : null,
+            ),
+            SizedBox(width: 12.w),
+            Expanded(
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: Color(0xFFE74C3C),
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: null,
                 ),
               ),
             ),
-          ),
-        );
-      }),
+          ],
+        ),
+      ),
     );
   }
 
@@ -375,10 +407,10 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
       ),
       child: TextField(
         controller: _textController,
-        style: TextStyle(fontSize: 16.sp, color: Colors.black),
+        style: TextStyle(fontSize: 16.sp, color: Colors.black, fontFamily: 'Roboto'),
         decoration: InputDecoration(
           hintText: 'Type your answer here..',
-          hintStyle: TextStyle(color: Colors.grey[400], fontSize: 16.sp),
+          hintStyle: TextStyle(color: Colors.grey[400], fontSize: 16.sp, fontFamily: 'Roboto'),
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
         ),
@@ -453,6 +485,7 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
                         color: const Color(0xFFE74C3C),
                         fontSize: 14.sp,
                         fontWeight: FontWeight.bold,
+                        fontFamily: null,
                       ),
                     ),
                   ),
@@ -519,6 +552,7 @@ class _QuizScreenEnhancedState extends State<QuizScreenEnhanced> {
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 1.5,
+                          fontFamily: null,
                         ),
                       ),
                       SizedBox(width: 8.w),

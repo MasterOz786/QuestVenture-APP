@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import '../../../core/providers/auth_provider.dart';
 import '../../../core/utils/validators.dart';
 import '../../../core/utils/helpers.dart';
-import '../../widgets/common/gradient_background.dart';
+import '../splash/gradient_background.dart';
+import '../splash/quest_venture_logo.dart';
 import '../../widgets/common/custom_button.dart';
 import '../../widgets/common/custom_text_field.dart';
-import '../../widgets/branding/quest_venture_logo.dart';
 import '../../widgets/branding/velitt_branding.dart';
 import '../../navigation/app_router.dart';
 
@@ -68,6 +68,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             color: Colors.black.withOpacity(0.1),
             blurRadius: 20,
             offset: const Offset(0, 10),
+            fontFamily: null,
           ),
         ],
       ),
@@ -112,6 +113,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   text: 'VERIFY',
                   isLoading: authProvider.isLoading,
                   onPressed: _handleVerifyOtp,
+                  gradientColors: [Color(0xFFE74C3C), Color(0xFFE74C3C)],
                 );
               },
             ),

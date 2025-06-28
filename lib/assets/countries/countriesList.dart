@@ -1,4 +1,4 @@
- final List<Map<String, String>> countriesList = [
+ final List<Map<String, String>> countriestList = [
   {'code': 'AF', 'name': 'Afghanistan', 'flag': 'https://flagcdn.com/24x18/af.png'},
   {'code': 'AL', 'name': 'Albania', 'flag': 'https://flagcdn.com/24x18/al.png'},
   {'code': 'DZ', 'name': 'Algeria', 'flag': 'https://flagcdn.com/24x18/dz.png'},

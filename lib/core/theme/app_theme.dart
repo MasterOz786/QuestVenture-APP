@@ -6,7 +6,7 @@ class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       primarySwatch: Colors.blue,
-      fontFamily: 'Roboto',
+      fontFamily: 'Beachday',
       scaffoldBackgroundColor: Colors.white,
       appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,

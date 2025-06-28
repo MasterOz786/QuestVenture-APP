@@ -24,6 +24,9 @@ class VelittBranding extends StatelessWidget {
           style: TextStyle(
             color: textColor ?? Colors.white,
             fontSize: (fontSize ?? 10).sp,
+            fontWeight: FontWeight.normal,
+            fontFamily: '',
+            decoration: TextDecoration.none,
           ),
         ),
         Text(
@@ -31,7 +34,9 @@ class VelittBranding extends StatelessWidget {
           style: TextStyle(
             color: textColor ?? Colors.white,
             fontSize: (fontSize != null ? fontSize! + 6 : 16).sp,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.normal,
+            fontFamily: '',
+            decoration: TextDecoration.none,
           ),
         ),
       ],

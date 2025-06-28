@@ -16,6 +16,7 @@ class AppColors {
   static const Color textRed = primaryRed;
   
   static const Color cardBackground = Colors.white;
+  static const Color cardBackgroundDark = Color(0xFFF5F5F5);
   static const Color logoBackground = Colors.black;
   static const Color overlayBackground = Colors.black54;
   

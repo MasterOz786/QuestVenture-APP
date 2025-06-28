@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/image_constants.dart';
-import '../../widgets/common/gradient_background.dart';
+import 'gradient_background.dart';
 import '../../navigation/app_router.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -88,7 +88,34 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                   ),
                   const Spacer(flex: 3),
-                  _buildBottomSection(),
+                ],
+              ),
+            ),
+            // Powered by text
+            Positioned(
+              bottom: 32.h,
+              right: 20.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    'Powered By',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: '',
+                    ),
+                  ),
+                  Text(
+                    'Velitt',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: '',
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -166,39 +193,26 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Widget _buildWelcomeBanner() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
-      decoration: BoxDecoration(
-        color: const Color(0xFFFFB74D),
-        borderRadius: BorderRadius.circular(8.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Text(
-        'WELCOME TO SCAVENGER HUNT',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 18.sp,
-          fontWeight: FontWeight.bold,
-          letterSpacing: 1.5,
+    return Center(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 8.w),
+        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
+        decoration: BoxDecoration(
+          color: const Color(0xFFFFD966),
+          borderRadius: BorderRadius.circular(8.r),
         ),
-      ),
-    );
-  }
-
-  Widget _buildBottomSection() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Image.asset(
-        'assets/images/backgrounds/background.jpeg',
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: 180.h,
+        child: Text(
+          'WELCOME TO SCAVENGER HUNT',
+          textAlign: TextAlign.center,
+          softWrap: false,
+          overflow: TextOverflow.visible,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.5,
+          ),
+        ),
       ),
     );
   }

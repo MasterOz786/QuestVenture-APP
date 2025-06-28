@@ -47,12 +47,14 @@ class CustomTextField extends StatelessWidget {
         style: TextStyle(
           fontSize: 16.sp,
           color: Colors.black,
+          fontFamily: 'Roboto',
         ),
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(
             color: Colors.grey[400],
             fontSize: 16.sp,
+            fontFamily: 'Roboto',
           ),
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(

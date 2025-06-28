@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import '../../../core/providers/quiz_provider.dart';
 import '../../../data/models/question_model.dart';
 import '../../../core/utils/helpers.dart';
-import '../../widgets/common/gradient_background.dart';
+import '../splash/gradient_background.dart';
+import '../splash/quest_venture_logo.dart';
 import '../../widgets/common/custom_button.dart';
 import '../../widgets/common/custom_text_field.dart';
-import '../../widgets/branding/quest_venture_logo.dart';
 import '../../widgets/branding/velitt_branding.dart';
 import '../../widgets/quiz/question_card.dart';
 import '../../widgets/quiz/timer_widget.dart';
@@ -82,7 +82,13 @@ class _QuizScreenState extends State<QuizScreen> {
                     SizedBox(height: 30.h),
                     _buildQuizCard(quizProvider.currentQuestion!),
                     SizedBox(height: 20.h),
-                    _buildBottomSection(),
+                    Padding(
+                      padding: EdgeInsets.only(right: 20.w, bottom: 32.h),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: VelittBranding(),
+                      ),
+                    ),
                   ],
                 ),
               );
@@ -243,13 +249,47 @@ class _QuizScreenState extends State<QuizScreen> {
     return Consumer<QuizProvider>(
       builder: (context, quizProvider, child) {
         return Column(
-          children: List.generate(answers.length, (index) {
-            return AnswerOption(
-              text: answers[index],
-              isSelected: quizProvider.getSelectedAnswer() == index,
-              onTap: () => quizProvider.selectAnswer(index),
-            );
-          }),
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: AnswerOption(
+                    text: answers[0],
+                    isSelected: quizProvider.getSelectedAnswer() == 0,
+                    onTap: () => quizProvider.selectAnswer(0),
+                  ),
+                ),
+                SizedBox(width: 16.w),
+                Expanded(
+                  child: AnswerOption(
+                    text: answers[1],
+                    isSelected: quizProvider.getSelectedAnswer() == 1,
+                    onTap: () => quizProvider.selectAnswer(1),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16.h),
+            Row(
+              children: [
+                Expanded(
+                  child: AnswerOption(
+                    text: answers[2],
+                    isSelected: quizProvider.getSelectedAnswer() == 2,
+                    onTap: () => quizProvider.selectAnswer(2),
+                  ),
+                ),
+                SizedBox(width: 16.w),
+                Expanded(
+                  child: AnswerOption(
+                    text: answers[3],
+                    isSelected: quizProvider.getSelectedAnswer() == 3,
+                    onTap: () => quizProvider.selectAnswer(3),
+                  ),
+                ),
+              ],
+            ),
+          ],
         );
       },
     );
@@ -331,13 +371,10 @@ class _QuizScreenState extends State<QuizScreen> {
           icon: Icons.arrow_forward,
           isLoading: quizProvider.isLoading,
           onPressed: quizProvider.getSelectedAnswer() != null ? _handleNext : null,
+          gradientColors: [Color(0xFFE74C3C), Color(0xFFE74C3C)],
         );
       },
     );
-  }
-
-  Widget _buildBottomSection() {
-    return SizedBox(height: 20.h);
   }
 
   void _handleNext() async {

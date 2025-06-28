@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/image_constants.dart';
-import '../../widgets/common/gradient_background.dart';
+import '../splash/gradient_background.dart';
+import '../splash/quest_venture_logo.dart';
 import '../../widgets/common/custom_button.dart';
-import '../../widgets/branding/quest_venture_logo.dart';
 import '../../widgets/branding/velitt_branding.dart';
 import '../../widgets/quiz/question_card.dart';
 import '../../navigation/app_router.dart';
+import 'about_us_screen.dart';
+
 
 class QuizCompletionScreen extends StatelessWidget {
   final int score;
@@ -20,21 +22,31 @@ class QuizCompletionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GradientBackground(
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 20.h),
-                const QuestVentureLogo(),
-                SizedBox(height: 30.h),
-                _buildResultsCard(context),
-                SizedBox(height: 20.h),
-                _buildBottomSection(),
-              ],
+      body: Stack(
+        children: [
+          GradientBackground(
+            child: SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 20.h),
+                    const QuestVentureLogo(),
+                    SizedBox(height: 30.h),
+                    _buildResultsCard(context),
+                    SizedBox(height: 20.h),
+                    Padding(
+                      padding: EdgeInsets.only(right: 20.w, bottom: 32.h),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: VelittBranding(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -107,6 +119,7 @@ class QuizCompletionScreen extends StatelessWidget {
               color: Colors.grey[700],
               fontSize: 14.sp,
               height: 1.5,
+              fontFamily: 'Roboto',
             ),
             textAlign: TextAlign.center,
           ),
@@ -115,30 +128,14 @@ class QuizCompletionScreen extends StatelessWidget {
             text: 'NEXT',
             icon: Icons.arrow_forward,
             onPressed: () {
-              Navigator.pushReplacementNamed(context, AppRouter.about);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const AboutScreen()),
+              );
             },
+            gradientColors: [Color(0xFFE74C3C), Color(0xFFE74C3C)],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildBottomSection() {
-    return Container(
-      height: 120.h,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(ImageConstants.networkAdventure),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: const Align(
-        alignment: Alignment.bottomRight,
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: VelittBranding(),
-        ),
       ),
     );
   }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../screens/splash/splash_screen.dart';
-import '../screens/auth/sign_in_screen.dart';
-import '../screens/location/location_screen.dart';
-import '../screens/quiz/quiz_screen.dart';
-import '../screens/ad/ad_screen.dart';
-import '../screens/quiz/quiz_completion_screen.dart';
-import '../screens/about/about_screen.dart';
+import '../screens/splash/sign_in_screen.dart';
+import '../screens/splash/location_screen.dart';
+import '../screens/splash/quiz_screen.dart';
+import '../screens/splash/ad_screen.dart';
+import '../screens/splash/quiz_completion_screen.dart';
+import '../screens/splash/about_us_screen.dart';
 
 class AppRouter {
   static const String splash = '/';
